@@ -1,0 +1,2353 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Christal Beauty Studio Frankfurt – Nägel, Wimpern & Hautpflege
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cormorant+SC:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0e0b08;
+        --bg2: #141009;
+        --surface: #1a1410;
+        --surface2: #201812;
+        --gold: #c9a96e;
+        --gold-light: #e8d5b0;
+        --gold-dim: rgba(201, 169, 110, 0.18);
+        --cream: #fdf6e6;
+        --muted: rgba(253, 246, 230, 0.52);
+        --border: rgba(201, 169, 110, 0.18);
+        --white10: rgba(255, 255, 255, 0.07);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--cream);
+        overflow-x: hidden;
+      }
+
+      /* ─── SCROLL PROGRESS ─── */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        width: 0%;
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+
+      /* ─── CURSOR ─── */
+      .cursor {
+        position: fixed;
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9997;
+        transform: translate(-50%, -50%);
+      }
+      .cursor-ring {
+        position: fixed;
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9996;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          opacity 0.3s;
+      }
+      .cursor-ring.big {
+        width: 58px;
+        height: 58px;
+        opacity: 0.45;
+      }
+
+      /* ─── FLOATING WHATSAPP ─── */
+      .float-whatsapp {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 900;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        text-decoration: none;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .float-whatsapp:hover {
+        transform: scale(1.1);
+        box-shadow: 0 12px 40px rgba(37, 211, 102, 0.55);
+      }
+      .float-whatsapp-tooltip {
+        position: absolute;
+        right: 66px;
+        bottom: 50%;
+        transform: translateY(50%);
+        white-space: nowrap;
+        background: var(--surface2);
+        color: var(--cream);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        padding: 8px 14px;
+        border: 1px solid var(--border);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .float-whatsapp:hover .float-whatsapp-tooltip {
+        opacity: 1;
+      }
+
+      /* ─── BACK TO TOP ─── */
+      .back-to-top {
+        position: fixed;
+        bottom: 98px;
+        right: 38px;
+        z-index: 900;
+        width: 40px;
+        height: 40px;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        text-decoration: none;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .back-to-top:hover {
+        transform: translateY(-3px);
+      }
+
+      /* ─── MOBILE MENU ─── */
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 9000;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+      .mobile-menu a {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        font-weight: 300;
+        color: var(--cream);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--gold);
+      }
+      .mobile-close {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 800;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 26px 60px;
+        transition:
+          background 0.45s,
+          padding 0.35s,
+          box-shadow 0.35s;
+      }
+      nav.scrolled {
+        background: rgba(14, 11, 8, 0.94);
+        backdrop-filter: blur(14px);
+        padding: 16px 60px;
+        box-shadow: 0 1px 0 var(--border);
+      }
+      .nav-logo img {
+        height: 48px;
+        width: auto;
+      }
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--cream);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.25s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-ctas {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--bg);
+        padding: 11px 28px;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+        display: inline-block;
+      }
+      .btn-primary:hover {
+        background: var(--gold-light);
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border: 1px solid var(--border);
+        color: var(--cream);
+        padding: 10px 24px;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition:
+          border-color 0.3s,
+          color 0.3s;
+      }
+      .btn-outline:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 1px;
+        background: var(--cream);
+      }
+
+      /* ─── SECTION LABELS ─── */
+      .section-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 14px;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        font-weight: 300;
+        line-height: 1.15;
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--gold);
+      }
+
+      /* ─── HERO ─── */
+      #home {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+      }
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 140px 60px 80px;
+        position: relative;
+        z-index: 2;
+      }
+      .hero-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.2s forwards;
+      }
+      .hero-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 5vw, 5.2rem);
+        font-weight: 300;
+        line-height: 1.1;
+        margin-bottom: 28px;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.4s forwards;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--gold);
+        display: block;
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.9;
+        color: var(--muted);
+        max-width: 400px;
+        margin-bottom: 44px;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.6s forwards;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.8s forwards;
+      }
+      .hero-right {
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 1.1s 0.3s forwards;
+      }
+      .hero-right::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(to right, var(--bg) 0%, transparent 30%),
+          linear-gradient(to top, var(--bg) 0%, transparent 25%);
+      }
+      .hero-right img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .hero-badge {
+        position: absolute;
+        bottom: 48px;
+        left: 48px;
+        z-index: 3;
+        background: var(--gold);
+        padding: 18px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-badge-num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--bg);
+        line-height: 1;
+      }
+      .hero-badge-text {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(14, 11, 8, 0.75);
+        margin-top: 4px;
+      }
+
+      /* ─── HOT OFFERS ─── */
+      #beauty-salon {
+        padding: 120px 60px;
+        background: var(--bg2);
+      }
+      .hot-offers-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      .hot-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .hot-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.35s,
+          box-shadow 0.35s,
+          border-color 0.35s;
+      }
+      .hot-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .hot-img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.8);
+        transition:
+          filter 0.4s,
+          transform 0.6s;
+      }
+      .hot-card:hover .hot-img {
+        filter: saturate(1.1);
+        transform: scale(1.04);
+      }
+      .hot-info {
+        padding: 20px 20px 24px;
+      }
+      .hot-name {
+        font-size: 0.82rem;
+        font-weight: 400;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      .hot-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 300;
+        color: var(--gold);
+      }
+
+      /* ─── REVIEWS ─── */
+      #reviews {
+        padding: 100px 60px;
+        background: var(--bg);
+        position: relative;
+        overflow: hidden;
+      }
+      #reviews::before {
+        content: '"';
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28rem;
+        color: rgba(255, 255, 255, 0.018);
+        position: absolute;
+        top: -60px;
+        left: -30px;
+        line-height: 1;
+        pointer-events: none;
+      }
+      .reviews-header {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .review-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 40px 36px;
+        transition:
+          border-color 0.3s,
+          background 0.3s;
+      }
+      .review-card:hover {
+        background: var(--surface2);
+        border-color: var(--gold);
+      }
+      .review-stars {
+        color: var(--gold);
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        margin-bottom: 22px;
+      }
+      .review-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.15rem;
+        font-weight: 300;
+        font-style: italic;
+        color: rgba(253, 246, 230, 0.82);
+        line-height: 1.85;
+        margin-bottom: 32px;
+      }
+      .review-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .review-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--gold);
+      }
+      .review-name {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+      }
+      .review-role {
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* ─── SERVICES TABS ─── */
+      .services-section {
+        padding: 100px 60px;
+        background: var(--bg2);
+      }
+      .services-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 300;
+        margin-bottom: 44px;
+        text-align: center;
+      }
+      .tabs {
+        display: flex;
+        gap: 0;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .tab-btn {
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 16px 24px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition:
+          color 0.25s,
+          border-color 0.25s;
+      }
+      .tab-btn:hover {
+        color: var(--cream);
+      }
+      .tab-btn.active {
+        color: var(--gold);
+        border-bottom-color: var(--gold);
+      }
+      .tab-panel {
+        display: none;
+        padding: 44px 0 0;
+      }
+      .tab-panel.active {
+        display: block;
+      }
+      .service-sub-header {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 32px 0 16px;
+      }
+      .service-sub-header:first-child {
+        margin-top: 0;
+      }
+      .service-list {
+        list-style: none;
+      }
+      .service-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+        transition: padding 0.25s;
+      }
+      .service-item:hover {
+        padding-left: 12px;
+      }
+      .service-item:last-child {
+        border-bottom: none;
+      }
+      .service-item-name {
+        font-size: 0.88rem;
+        font-weight: 400;
+      }
+      .service-item-sub {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      .service-price-col {
+        flex-shrink: 0;
+        margin-left: 24px;
+      }
+      .service-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.15rem;
+        font-weight: 300;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+
+      /* ─── SKIN CLINIC ─── */
+      .skin-section {
+        padding: 100px 60px;
+        background: var(--bg);
+      }
+      .skin-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 52px;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+      .skin-tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .skin-tab {
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 9px 18px;
+        cursor: pointer;
+        transition:
+          border-color 0.25s,
+          color 0.25s,
+          background 0.25s;
+      }
+      .skin-tab:hover,
+      .skin-tab.active {
+        border-color: var(--gold);
+        color: var(--gold);
+        background: var(--gold-dim);
+      }
+      .skin-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .skin-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition:
+          transform 0.35s,
+          border-color 0.35s,
+          box-shadow 0.35s;
+      }
+      .skin-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--gold);
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
+      }
+      .skin-card img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.75);
+        transition:
+          filter 0.4s,
+          transform 0.5s;
+      }
+      .skin-card:hover img {
+        filter: saturate(1.05);
+        transform: scale(1.04);
+      }
+      .skin-card-body {
+        padding: 18px 20px 22px;
+      }
+      .skin-card-price {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+      .skin-card-name {
+        font-size: 0.82rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .skin-card-desc {
+        font-size: 0.75rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .skin-card.hidden {
+        display: none;
+      }
+
+      /* ─── ABOUT ─── */
+      #about-us {
+        padding: 100px 60px;
+        background: var(--bg2);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-imgs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .about-imgs img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        filter: saturate(0.75);
+        transition: filter 0.4s;
+      }
+      .about-imgs img:first-child {
+        margin-top: 40px;
+      }
+      .about-imgs:hover img {
+        filter: saturate(1);
+      }
+      .about-text h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+        font-weight: 300;
+        line-height: 1.25;
+        margin-bottom: 22px;
+        margin-top: 14px;
+      }
+      .about-features {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 36px;
+      }
+      .about-feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .about-feature-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        background: var(--gold-dim);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+      }
+      .about-feature-title {
+        font-size: 0.82rem;
+        font-weight: 500;
+        margin-bottom: 4px;
+        letter-spacing: 0.04em;
+      }
+      .about-feature-desc {
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      /* ─── CONTACT ─── */
+      #contact-us {
+        padding: 100px 60px;
+        background: var(--bg);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .contact-info h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 3vw, 3rem);
+        font-weight: 300;
+        margin-bottom: 18px;
+        margin-top: 14px;
+      }
+      .contact-info > p {
+        font-size: 0.88rem;
+        line-height: 1.85;
+        color: var(--muted);
+        margin-bottom: 36px;
+      }
+      .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 36px;
+      }
+      .contact-detail {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 0.85rem;
+      }
+      .contact-detail-icon {
+        font-size: 1.1rem;
+      }
+      .contact-social {
+        display: flex;
+        gap: 10px;
+      }
+      .social-link {
+        width: 42px;
+        height: 42px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+      }
+      .social-link:hover {
+        border-color: var(--gold);
+        background: var(--gold-dim);
+      }
+      .contact-form {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 44px 40px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .form-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .form-input,
+      .form-textarea {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        padding: 13px 16px;
+        color: var(--cream);
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.85rem;
+        outline: none;
+        width: 100%;
+        transition: border-color 0.25s;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: var(--gold);
+      }
+      .form-textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .form-submit {
+        width: 100%;
+        background: var(--gold);
+        color: var(--bg);
+        border: none;
+        padding: 16px;
+        cursor: pointer;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-top: 8px;
+        transition:
+          background 0.3s,
+          transform 0.2s;
+      }
+      .form-submit:hover {
+        background: var(--gold-light);
+        transform: translateY(-1px);
+      }
+      .form-success {
+        display: none;
+        background: var(--gold-dim);
+        border: 1px solid var(--gold);
+        padding: 18px 24px;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        color: var(--gold);
+        margin-top: 16px;
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        padding: 70px 60px 36px;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 56px;
+      }
+      .footer-brand img {
+        height: 40px;
+        margin-bottom: 18px;
+        display: block;
+      }
+      .footer-brand p {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.85;
+        max-width: 280px;
+      }
+      .footer-col-title {
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+      .footer-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .footer-links a {
+        font-size: 0.8rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.25s;
+      }
+      .footer-links a:hover {
+        color: var(--cream);
+      }
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding-top: 28px;
+        display: flex;
+        justify-content: center;
+      }
+      .footer-copy {
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+      }
+
+      /* ─── FADE-UP ─── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ─── ANIMATIONS ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* ─── TOAST ─── */
+      #toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: var(--surface2);
+        color: var(--gold);
+        border: 1px solid var(--gold);
+        padding: 14px 32px;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        z-index: 9999;
+        transition: transform 0.4s ease;
+        white-space: nowrap;
+      }
+      #toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 1100px) {
+        .hot-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .skin-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        nav {
+          padding: 20px 28px;
+        }
+        nav.scrolled {
+          padding: 14px 28px;
+        }
+        .nav-links,
+        .nav-ctas {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        #home {
+          grid-template-columns: 1fr;
+        }
+        .hero-right {
+          display: none;
+        }
+        .hero-left {
+          padding: 130px 28px 70px;
+        }
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .about-imgs {
+          grid-template-columns: 1fr 1fr;
+        }
+        #beauty-salon,
+        #reviews,
+        .services-section,
+        .skin-section,
+        #about-us,
+        #contact-us {
+          padding: 80px 28px;
+        }
+        .footer-top {
+          grid-template-columns: 1fr 1fr;
+          gap: 36px;
+        }
+        footer {
+          padding: 56px 28px 32px;
+        }
+        .reviews-grid {
+          grid-template-columns: 1fr;
+        }
+        .tabs {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+        }
+        .skin-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      @media (max-width: 600px) {
+        .hot-grid {
+          grid-template-columns: 1fr;
+        }
+        .skin-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-title {
+          font-size: 2.8rem;
+        }
+        .hero-ctas {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a
+      class="float-whatsapp"
+      href="https://wa.me/+491734347914"
+      target="_blank"
+      title="WhatsApp"
+    >
+      💬
+      <span class="float-whatsapp-tooltip">Termin per WhatsApp buchen!</span>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <a class="back-to-top" href="#home" id="backToTop">↑</a>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+      <a href="#home" onclick="closeMobileMenu()">Startseite</a>
+      <a href="#beauty-salon" onclick="closeMobileMenu()">Leistungen</a>
+      <a href="#about-us" onclick="closeMobileMenu()">Über uns</a>
+      <a href="#contact-us" onclick="closeMobileMenu()">Kontakt</a>
+      <a href="tel:+491734347914" class="btn-primary" style="font-size: 14px"
+        >Jetzt anrufen</a
+      >
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <div class="nav-logo">
+        <img
+          src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b5317_Logo.png"
+          alt="Christal Beauty Studio"
+        />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Startseite</a></li>
+        <li><a href="#beauty-salon">Leistungen</a></li>
+        <li><a href="#about-us">Über uns</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="#contact-us" class="btn-primary">Termin buchen</a>
+        <a href="tel:+491734347914" class="btn-outline">Jetzt anrufen</a>
+      </div>
+      <div class="hamburger" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home">
+      <div class="hero-left fade-up">
+        <p class="hero-eyebrow">✦ Dein Beauty-Studio in Frankfurt</p>
+        <h1 class="hero-title">
+          Willkommen<br /><em>bei Christal Beauty Studio</em>
+        </h1>
+        <p class="hero-subtitle">
+          Gönn dir eine Auszeit und lass dich von uns verwöhnen – mit
+          Behandlungen, die deine natürliche Schönheit unterstreichen.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact-us" class="btn-primary">Termin buchen</a>
+          <a href="tel:+491734347914" class="btn-outline">Jetzt anrufen</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img
+          src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b5337_503101622_1358303982105633_3502815691251453657_n.png"
+          alt="Christal Beauty"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-badge">
+          <div class="hero-badge-num">5★</div>
+          <div class="hero-badge-text">Google Bewertungen</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOT OFFERS -->
+    <section id="beauty-salon">
+      <div class="hot-offers-header fade-up">
+        <span class="section-label">Am meisten gebucht</span>
+        <h2 class="section-title">Unsere Top-Behandlungen</h2>
+      </div>
+      <div class="hot-grid">
+        <div class="hot-card fade-up">
+          <img
+            class="hot-img"
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b52e9_photo_2025-11-22%2002.35.31.jpeg"
+            alt="Russische Maniküre"
+          />
+          <div class="hot-info">
+            <div class="hot-name">Neumodellage (Russische Maniküre)</div>
+            <div class="hot-price">ab 57 €</div>
+          </div>
+        </div>
+        <div class="hot-card fade-up" style="transition-delay: 0.1s">
+          <img
+            class="hot-img"
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b52eb_500906640_17907659745171606_5578481978294808859_n.jpg"
+            alt="Brow Lifting"
+          />
+          <div class="hot-info">
+            <div class="hot-name">Brow Lifting and Styling</div>
+            <div class="hot-price">60 €</div>
+          </div>
+        </div>
+        <div class="hot-card fade-up" style="transition-delay: 0.2s">
+          <img
+            class="hot-img"
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b5309_BrowLift-04.png"
+            alt="Soft Volumen Lashes"
+          />
+          <div class="hot-info">
+            <div class="hot-name">Soft-Volumen Lashes (Neumodellage)</div>
+            <div class="hot-price">110 €</div>
+          </div>
+        </div>
+        <div class="hot-card fade-up" style="transition-delay: 0.3s">
+          <img
+            class="hot-img"
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b52ec_photo_2025-11-22%2002.34.49%20(1).jpeg"
+            alt="Mineral Augenbrauen"
+          />
+          <div class="hot-info">
+            <div class="hot-name">Mineral-Augenbrauen (Permanent Make-up)</div>
+            <div class="hot-price">250 €</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <div class="reviews-header fade-up">
+        <span class="section-label">Das sagen unsere Kundinnen</span>
+        <h2 class="section-title">Vertrauen, das man sieht</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Cristina ist die Einzige, zu der ich mit vollem Vertrauen für meine
+            Nägel gehe. Sie arbeitet sauber, sorgfältig und mit sehr viel
+            Geschmack. Jedes Mal bin ich super zufrieden."
+          </p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/693085bedbaeeb2d830892ed_Screenshot%202025-12-03%20at%2019.46.39.png"
+              alt="Morarašu Jeļēna"
+            />
+            <div>
+              <div class="review-name">Morarašu Jeļēna</div>
+              <div class="review-role">Rechtsanwältin</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up" style="transition-delay: 0.1s">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Saubere und hygienische Arbeit. Bin immer sehr zufrieden. Gebe
+            Vorlage und das Ergebnis ist immer noch besser als das gegebene.
+            Nägel halten super."
+          </p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b533b_503843682_1944829729621323_4359467945092768216_n.jpg"
+              alt="Natascha Zimmer"
+            />
+            <div>
+              <div class="review-name">Natascha Zimmer</div>
+              <div class="review-role">Zweifach-Mama</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up" style="transition-delay: 0.2s">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "Bestes Studio für Maniküre und Pediküre! Cristina arbeitet sehr
+            sauber und gründlich und zaubert mir seit nun fast 3 Jahren jedes
+            Mal perfekte Nägel!"
+          </p>
+          <div class="review-author">
+            <img
+              class="review-avatar"
+              src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/693086d7e2d170fa02784027_unnamed1.jpg"
+              alt="Chris Za"
+            />
+            <div>
+              <div class="review-name">Chris Za</div>
+              <div class="review-role">Managerin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES TABS -->
+    <div class="services-section">
+      <h2 class="services-title">Unsere Leistungen im Überblick</h2>
+      <div class="tabs" role="tablist">
+        <button
+          class="tab-btn active"
+          role="tab"
+          onclick="showTab('manikuere', this)"
+        >
+          01 Maniküre
+        </button>
+        <button class="tab-btn" role="tab" onclick="showTab('pediküre', this)">
+          02 Pediküre
+        </button>
+        <button class="tab-btn" role="tab" onclick="showTab('wimpern', this)">
+          03 Wimpernverlängerung
+        </button>
+        <button
+          class="tab-btn"
+          role="tab"
+          onclick="showTab('browsLashes', this)"
+        >
+          04 Wimpern & Brauen
+        </button>
+        <button class="tab-btn" role="tab" onclick="showTab('pmu', this)">
+          05 Permanent Make-up
+        </button>
+        <button class="tab-btn" role="tab" onclick="showTab('haar', this)">
+          06 Haarglättung
+        </button>
+        <button class="tab-btn" role="tab" onclick="showTab('zaehne', this)">
+          07 Zahnaufhellung
+        </button>
+      </div>
+
+      <div class="tab-panel active" id="tab-manikuere">
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">
+                Neumodellage (inkl. Russische Maniküre)
+              </div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">ab 65 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Klassische Maniküre</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">35 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Gel ohne Farbe</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">50 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Gel mit Farbe</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">55 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">French / Design</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">ab 60 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Japanische Maniküre</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">45 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Shellack</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">45 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-pediküre">
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Fusspflege (Basis)</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">45 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Fusspflege + Normaler Lack</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">50 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Fusspflege + Gel</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">55 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Fusspflege + Shellack</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">50 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Fusspflege + French</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">55 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-wimpern">
+        <div class="service-sub-header">1:1 Technik – Natural Look</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Neumodellage</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">100 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 2 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">35 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 3 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">45 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 4 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">55 €</div>
+            </div>
+          </li>
+        </ul>
+        <div class="service-sub-header">Soft-Volumen Hybrid</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Neumodellage</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">110 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 2 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">40 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 3 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">50 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 4 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">60 €</div>
+            </div>
+          </li>
+        </ul>
+        <div class="service-sub-header">Mega-Volumen</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Neumodellage</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">120 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 2 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">40 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 3 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">55 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffüllen nach 4 Wochen</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">60 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-browsLashes">
+        <div class="service-sub-header">Wimpern (Lashes)</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Wimpernlaminierung (Lifting)</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">50 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Wimpernlaminierung + Färben</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">65 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Wimpernfärben</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">30 €</div>
+            </div>
+          </li>
+        </ul>
+        <div class="service-sub-header">Augenbrauen (Brows)</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">
+                Augenbrauenmodellierung (Zupfen/Waxing)
+              </div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">30 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">
+                Augenbrauenmodellierung + Färben
+              </div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">40 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">
+                Augenbrauenmodellierung + Laminierung
+              </div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">60 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Brow Lifting Komplett</div>
+              <div class="service-item-sub">
+                Modellierung + Laminierung + Färben
+              </div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">70 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-pmu">
+        <div class="service-sub-header">Augenbrauen – Mineral Brows</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Neubehandlung</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">250 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Korrektur</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">150 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffrischung</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">250 €</div>
+            </div>
+          </li>
+        </ul>
+        <div class="service-sub-header">Lippen – Mineral Lippen</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Neubehandlung</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">250 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Korrektur</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">150 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Auffrischung</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">250 €</div>
+            </div>
+          </li>
+        </ul>
+        <div class="service-sub-header">Augen – Lidstrich / Eyeliner</div>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Lidstrich</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">180 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Korrektur</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">100 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Shadow Eyeliner</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">290 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Shadow Korrektur</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">200 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-haar">
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Keratin</div>
+              <div class="service-item-sub">3–6 Stunden</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">ab 130 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Nanoplastia</div>
+              <div class="service-item-sub">4–7 Stunden</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">ab 140 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Hairbotox</div>
+              <div class="service-item-sub">2–5 Stunden</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">ab 130 €</div>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Reconstruction</div>
+              <div class="service-item-sub">2–4 Stunden</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">90 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" id="tab-zaehne">
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-main">
+              <div class="service-item-name">Zahnaufhellung</div>
+            </div>
+            <div class="service-price-col">
+              <div class="service-price">99 €</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SKIN CLINIC -->
+    <section class="skin-section">
+      <div class="skin-header fade-up">
+        <div>
+          <span class="section-label">Professionelle Hautpflege</span>
+          <h2 class="section-title">Deine Haut verdient das Beste</h2>
+        </div>
+        <div class="skin-tabs">
+          <button class="skin-tab active" onclick="filterSkin('all', this)">
+            Alle
+          </button>
+          <button class="skin-tab" onclick="filterSkin('specials', this)">
+            Specials
+          </button>
+          <button class="skin-tab" onclick="filterSkin('antiaging', this)">
+            Anti-Aging
+          </button>
+          <button class="skin-tab" onclick="filterSkin('akne', this)">
+            Akne
+          </button>
+          <button class="skin-tab" onclick="filterSkin('microneedling', this)">
+            Microneedling
+          </button>
+          <button class="skin-tab" onclick="filterSkin('aqua', this)">
+            Aquafacial
+          </button>
+        </div>
+      </div>
+      <div class="skin-grid" id="skinGrid">
+        <div class="skin-card" data-cat="specials">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b5390_B-SELFIE_carbossiterapia.jpg"
+            alt="Carboxy"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">129 €</div>
+            <div class="skin-card-name">Carboxy Pro Therapie</div>
+            <div class="skin-card-desc">
+              Für sichtbar glattere und strahlendere Haut dank
+              Sauerstoff-Therapie.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="specials microneedling">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b5332_microneedlingfacial_aestheticallure_1.webp"
+            alt="Microneedling"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">139 €</div>
+            <div class="skin-card-name">Microneedling – Classic</div>
+            <div class="skin-card-desc">
+              Regt die Kollagenbildung an und schleust Wirkstoffe tief in deine
+              Haut ein.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="specials">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b538e_cosmetologist-massaging-hair-head-woman-spa-treatments-beauty-treatment-spa-salon%20(1)-S.jpg"
+            alt="BioEnzyme"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">individuell</div>
+            <div class="skin-card-name">BioEnzyme Therapy</div>
+            <div class="skin-card-desc">
+              Intensive Tiefenpflege, die deine Haut entgiftet und zum Strahlen
+              bringt.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="antiaging">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b538d_Endoskopisches-Bella-Eyes.webp"
+            alt="EyeLift"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">69 €</div>
+            <div class="skin-card-name">EyeLift Peeling Ritual</div>
+            <div class="skin-card-desc">
+              Sanfte Pflege speziell für deine empfindliche Augenpartie.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="antiaging">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b537b_FRuchtsa%CC%88urepeeling-Hero-1200px.jpg"
+            alt="Acid Peeling"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">149 €</div>
+            <div class="skin-card-name">Glow & Renew Acid Peeling</div>
+            <div class="skin-card-desc">
+              Fruchtsäure-Peeling für einen frischen, ebenmäßigen Teint.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="antiaging">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b5357_standard.26ac1874.fadenlifting_berlin_2.jpg"
+            alt="Lift Firm"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">159 €</div>
+            <div class="skin-card-name">Lift & Firm Deluxe</div>
+            <div class="skin-card-desc">
+              Straffende Luxusbehandlung mit spürbarem Lifting-Effekt.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="akne">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b5354_490056565_17902776708171606_5791920514933941886_n.jpg"
+            alt="Akne"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">129 €</div>
+            <div class="skin-card-name">Dermo Control Aknebehandlung</div>
+            <div class="skin-card-desc">
+              Wirkt gezielt gegen Unreinheiten und beruhigt entzündete Haut.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="akne">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b53ac_rosacea_gesichtspflege.webp"
+            alt="Calm Restore"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">149 €</div>
+            <div class="skin-card-name">Calm Restore (Rosazea & Sensitive)</div>
+            <div class="skin-card-desc">
+              Lindert Rötungen und schenkt empfindlicher Haut neue Balance.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="microneedling">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b534f_filters_quality(70).webp"
+            alt="Microneedling Neck"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">159 €</div>
+            <div class="skin-card-name">Microneedling Face + Neck</div>
+            <div class="skin-card-desc">
+              Verjüngt und strafft Gesicht und Hals in einer Behandlung.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="microneedling">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b534b_1676578433.jpg"
+            alt="Power Duo"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">169 €</div>
+            <div class="skin-card-name">Microneedling + Aquapeel</div>
+            <div class="skin-card-desc">
+              Das Power-Duo: Tiefenreinigung und sichtbare Hautverbesserung.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="aqua">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b534d_aqualift-hyaluronic-acid-moisturizer-gel-2.webp"
+            alt="AquaLift"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">140 €</div>
+            <div class="skin-card-name">AquaLift & Hydration Boost</div>
+            <div class="skin-card-desc">
+              Intensiver Feuchtigkeitsboost mit straffendem Sofort-Effekt.
+            </div>
+          </div>
+        </div>
+        <div class="skin-card" data-cat="aqua">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52cc/692f8aed757b362f3c3b53ae_peeling.jpg"
+            alt="Business Lady"
+          />
+          <div class="skin-card-body">
+            <div class="skin-card-price">130 €</div>
+            <div class="skin-card-name">AquaFacial – Business Lady</div>
+            <div class="skin-card-desc">
+              Porentief rein, intensiv durchfeuchtet – für sofortigen Glow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about-us">
+      <div class="about-grid">
+        <div class="about-imgs fade-up">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b53a7_499163168_1235539998229965_8480593345217128389_n.jpg"
+            alt="Team"
+          />
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b53a6_photo_2025-11-22%2002.35.07.jpeg"
+            alt="Studio"
+          />
+        </div>
+        <div class="about-text fade-up" style="transition-delay: 0.15s">
+          <span class="section-label">Lerne uns kennen</span>
+          <h2>Schönheit ist unser Beruf – und unsere Leidenschaft</h2>
+          <p style="font-size: 15px; line-height: 1.75; color: var(--muted)">
+            Bei uns bist du mehr als nur ein Termin. Wir nehmen uns Zeit für
+            dich und sorgen dafür, dass du dich rundum wohlfühlst – vom ersten
+            Moment bis zum fertigen Ergebnis.
+          </p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">👥</div>
+              <div>
+                <div class="about-feature-title">Erfahrenes Team mit Herz</div>
+                <div class="about-feature-desc">
+                  Drei Spezialistinnen, die ihr Handwerk lieben und bei jeder
+                  Behandlung ihr Bestes geben.
+                </div>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">✨</div>
+              <div>
+                <div class="about-feature-title">
+                  Wohlfühlatmosphäre garantiert
+                </div>
+                <div class="about-feature-desc">
+                  Entspann dich in unserem gemütlichen Studio – hier darfst du
+                  einfach mal abschalten und genießen.
+                </div>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">📍</div>
+              <div>
+                <div class="about-feature-title">
+                  Zentral und gut erreichbar
+                </div>
+                <div class="about-feature-desc">
+                  Nur 15 Minuten vom Frankfurter Stadtzentrum entfernt – ideal
+                  für deinen nächsten Beauty-Termin.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact-us">
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <span class="section-label">Kontakt</span>
+          <h2>Wir freuen uns auf dich</h2>
+          <p>
+            Du möchtest einen Termin vereinbaren oder hast Fragen zu unseren
+            Behandlungen? Schreib uns einfach – wir melden uns schnell zurück.
+          </p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-detail-icon">📞</span
+              ><a
+                href="tel:+491734347914"
+                style="color: inherit; text-decoration: none"
+                >+49 173 434 7914</a
+              >
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon">📍</span
+              ><span>Frankfurt am Main – 15 Min. vom Stadtzentrum</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon">⏰</span
+              ><span>Mo – Sa: 9:00 – 20:00 Uhr</span>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a
+              class="social-link"
+              href="https://www.instagram.com/christal.ffm/"
+              target="_blank"
+              title="Instagram"
+              >📸</a
+            >
+            <a
+              class="social-link"
+              href="https://wa.me/+491734347914"
+              target="_blank"
+              title="WhatsApp"
+              >💬</a
+            >
+            <a
+              class="social-link"
+              href="https://www.facebook.com/profile.php?id=61572803693409"
+              target="_blank"
+              title="Facebook"
+              >📘</a
+            >
+            <a
+              class="social-link"
+              href="https://share.google/r8ibfhrvOdUDfk6Mb"
+              target="_blank"
+              title="Google Maps"
+              >🗺️</a
+            >
+          </div>
+        </div>
+        <div class="contact-form fade-up" style="transition-delay: 0.15s">
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+              <label class="form-label">Dein Name</label>
+              <input
+                class="form-input"
+                type="text"
+                placeholder="Vorname Nachname"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Deine E-Mail</label>
+              <input
+                class="form-input"
+                type="email"
+                placeholder="name@email.de"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Deine Nachricht</label>
+              <textarea
+                class="form-textarea"
+                placeholder="Welche Behandlung interessiert dich?"
+                required
+              ></textarea>
+            </div>
+            <button class="form-submit" type="submit">
+              Nachricht absenden
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            ✦ Vielen Dank! Wir melden uns schnellstmöglich bei dir.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b5317_Logo.png"
+            alt="Christal Beauty Studio"
+          />
+          <p>
+            Weil du es dir wert bist – Nägel, Wimpern, Hautpflege und mehr, mit
+            Liebe zum Detail.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="#home">Startseite</a></li>
+            <li><a href="#beauty-salon">Behandlungen</a></li>
+            <li><a href="#about-us">Über uns</a></li>
+            <li><a href="#contact-us">Termin buchen</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Kontakt</div>
+          <ul class="footer-links">
+            <li><a href="tel:+491734347914">+49 173 434 7914</a></li>
+            <li>
+              <a href="https://www.instagram.com/christal.ffm/" target="_blank"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a href="https://wa.me/+491734347914" target="_blank">WhatsApp</a>
+            </li>
+            <li>
+              <a href="https://share.google/r8ibfhrvOdUDfk6Mb" target="_blank"
+                >Google Maps</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy"
+          >© 2025 Christal Beauty Studio. Alle Rechte vorbehalten.</span
+        >
+      </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div id="toast">✦ Nachricht erfolgreich gesendet!</div>
+
+    <script>
+      // CURSOR
+      const cur = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
+      });
+      (function animRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(animRing);
+      })();
+      document
+        .querySelectorAll("a,button,.hot-card,.skin-card,.review-card")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => ring.classList.add("big"));
+          el.addEventListener("mouseleave", () => ring.classList.remove("big"));
+        });
+
+      // SCROLL PROGRESS + NAV + BACK TO TOP
+      window.addEventListener("scroll", () => {
+        const st = window.scrollY;
+        const dh = document.documentElement.scrollHeight - window.innerHeight;
+        document.getElementById("scrollProgress").style.width =
+          (st / dh) * 100 + "%";
+        document.getElementById("navbar").classList.toggle("scrolled", st > 60);
+        document
+          .getElementById("backToTop")
+          .classList.toggle("visible", st > 400);
+      });
+
+      // SCROLL REVEAL
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 70);
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+
+      // SMOOTH ANCHORS
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // MOBILE MENU
+      function openMobileMenu() {
+        document.getElementById("mobileMenu").classList.add("open");
+      }
+      function closeMobileMenu() {
+        document.getElementById("mobileMenu").classList.remove("open");
+      }
+
+      // TABS
+      function showTab(id, btn) {
+        document
+          .querySelectorAll(".tab-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById("tab-" + id).classList.add("active");
+        btn.classList.add("active");
+      }
+
+      // SKIN FILTER
+      function filterSkin(cat, btn) {
+        document
+          .querySelectorAll(".skin-tab")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".skin-card").forEach((c) => {
+          if (cat === "all" || c.dataset.cat.includes(cat))
+            c.classList.remove("hidden");
+          else c.classList.add("hidden");
+        });
+      }
+
+      // FORM
+      function submitForm(e) {
+        e.preventDefault();
+        document.getElementById("formSuccess").style.display = "block";
+        e.target.reset();
+        const t = document.getElementById("toast");
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 3500);
+      }
+    </script>
+  </body>
+</html>

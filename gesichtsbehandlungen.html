@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesichtsbehandlungen Frankfurt – Microneedling, AquaFacial & Anti-Aging | Christal Beauty Studio</title>
+    <meta name="description" content="Professionelle Gesichtsbehandlungen in Frankfurt: Microneedling, AquaFacial, Carboxy Therapie, Fruchtsäure-Peeling & Anti-Aging. Individuelle Hautpflege ab 69 €. Jetzt Termin buchen!" />
+    <meta name="keywords" content="Gesichtsbehandlung Frankfurt, Microneedling Frankfurt, AquaFacial Frankfurt, Anti-Aging Frankfurt, Aknebehandlung Frankfurt, Fruchtsäure Peeling Frankfurt, Hautpflege Frankfurt" />
+    <link rel="canonical" href="https://christal-beauty.de/gesichtsbehandlungen.html" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Gesichtsbehandlungen – Microneedling, AquaFacial & Anti-Aging | Christal Beauty Studio Frankfurt" />
+    <meta property="og:description" content="Microneedling, AquaFacial, Carboxy Therapie & Anti-Aging Behandlungen in Frankfurt. Professionelle Hautpflege individuell auf deine Haut abgestimmt." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://christal-beauty.de/gesichtsbehandlungen.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Christal Beauty Studio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- CUSTOM CURSOR -->
+    <div id="cursor"></div>
+    <div id="cursorRing"></div>
+
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a
+      class="float-whatsapp"
+      href="https://wa.me/+491734347914"
+      target="_blank"
+      title="WhatsApp"
+    >
+      💬
+      <span class="float-whatsapp-tooltip">Termin per WhatsApp buchen!</span>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <a class="back-to-top" href="#top" id="backToTop">↑</a>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+      <a href="index.html" onclick="closeMobileMenu()">Home</a>
+      <a href="services.html" onclick="closeMobileMenu()">Leistungen</a>
+      <a href="gesichtsbehandlungen.html" onclick="closeMobileMenu()"
+        >Gesichtsbehandlungen</a
+      >
+      <a href="about.html" onclick="closeMobileMenu()">Über uns</a>
+      <a href="index.html#contact-us" onclick="closeMobileMenu()">Kontakt</a>
+      <a
+        href="tel:+491734347914"
+        class="btn-primary"
+        style="
+          font-family: &quot;Raleway&quot;, sans-serif;
+          font-size: 11px;
+          letter-spacing: 0.15em;
+        "
+        >Jetzt anrufen</a
+      >
+    </div>
+
+    <!-- NAV -->
+    <nav id="navbar">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b5317_Logo.png"
+            alt="Christal Beauty Studio"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Leistungen</a></li>
+        <li><a href="gesichtsbehandlungen.html">Gesichtsbehandlungen</a></li>
+        <li><a href="about.html">Über uns</a></li>
+        <li><a href="index.html#contact-us">Kontakt</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="index.html#contact-us" class="btn-primary">Termin buchen</a>
+        <a href="tel:+491734347914" class="btn-outline">Jetzt anrufen</a>
+      </div>
+      <div class="hamburger" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+
+    <!-- SKIN CLINIC -->
+    <section class="hot-section" id="top" style="padding-top: 160px">
+      <div class="skin-page-hero fade-up">
+        <span class="section-label">Professionelle Hautpflege</span>
+        <h1 class="skin-page-title">Deine Haut verdient das Beste</h1>
+        <p class="skin-page-subtitle">
+          Wir kombinieren innovative Technologien mit hochwertigen Wirkstoffen
+          für sichtbare Ergebnisse – individuell auf deine Haut abgestimmt.
+        </p>
+        <blockquote class="skin-page-quote">
+          „Schöne Haut kommt nicht von allein – sie verdient Pflege,
+          Aufmerksamkeit und die richtige Behandlung."
+        </blockquote>
+        <div class="skin-tabs" style="justify-content: center">
+          <button class="skin-tab active" onclick="filterSkin('all', this)">
+            Alle
+          </button>
+          <button class="skin-tab" onclick="filterSkin('specials', this)">
+            Specials
+          </button>
+          <button class="skin-tab" onclick="filterSkin('antiaging', this)">
+            Anti-Aging
+          </button>
+          <button class="skin-tab" onclick="filterSkin('akne', this)">
+            Akne
+          </button>
+          <button class="skin-tab" onclick="filterSkin('microneedling', this)">
+            Microneedling
+          </button>
+          <button class="skin-tab" onclick="filterSkin('aqua', this)">
+            Aquafacial
+          </button>
+        </div>
+      </div>
+      <div class="hot-grid" id="skinGrid">
+        <!-- 01 Carboxy Pro Therapie -->
+        <div class="flip-card skin-card fade-up" data-cat="specials">
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/carboxy-pro-therapy.jpg"
+                alt="Carboxy"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">01</span>
+              <div class="hot-content">
+                <span class="hot-label">SPECIALS</span>
+                <h3 class="hot-name">Carboxy Pro<br />Therapie</h3>
+                <span class="hot-price">129 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">SPECIALS</span>
+              <h3 class="flip-back-title">Carboxy Pro Therapie</h3>
+              <p class="flip-back-desc">
+                CO2-Therapie, die die Sauerstoffversorgung der Haut anregt.
+                Fördert die Durchblutung, strafft das Gewebe und sorgt für einen
+                sichtbar frischeren, ebenmäßigeren Teint.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 60 Min.</li>
+                <li>Tiefenwirksame Sauerstoff-Infusion</li>
+                <li>Kollagenaufbau & Straffung</li>
+                <li>Sofort sichtbarer Glow-Effekt</li>
+              </ul>
+              <div class="flip-back-price">129 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 Microneedling Classic -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="specials microneedling"
+          style="transition-delay: 0.1s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/microneeling.jpg"
+                alt="Microneedling"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">02</span>
+              <div class="hot-content">
+                <span class="hot-label">MICRONEEDLING</span>
+                <h3 class="hot-name">Microneedling<br />Classic</h3>
+                <span class="hot-price">139 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">MICRONEEDLING</span>
+              <h3 class="flip-back-title">Microneedling – Classic</h3>
+              <p class="flip-back-desc">
+                Feine Mikronadeln erzeugen kontrollierte Mikroverletzungen, die
+                die natürliche Hauterneuerung aktivieren. Wirkstoffe werden tief
+                eingeschleust für maximale Wirkung.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 75 Min.</li>
+                <li>Stimuliert Kollagen & Elastin</li>
+                <li>Verfeinert Poren & Narben</li>
+                <li>Inkl. Wirkstoff-Serum</li>
+              </ul>
+              <div class="flip-back-price">139 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 BioEnzyme Therapy -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="specials"
+          style="transition-delay: 0.2s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img class="hot-img" src="./image/peeling.jpg" alt="BioEnzyme" />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">03</span>
+              <div class="hot-content">
+                <span class="hot-label">SPECIALS</span>
+                <h3 class="hot-name">BioEnzyme<br />Therapy</h3>
+                <span class="hot-price">individuell</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">SPECIALS</span>
+              <h3 class="flip-back-title">BioEnzyme Therapy</h3>
+              <p class="flip-back-desc">
+                Enzymatische Intensivpflege, die abgestorbene Hautzellen sanft
+                löst und die Haut von innen heraus entgiftet. Ideal für müde,
+                gestresste Haut.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 60–90 Min.</li>
+                <li>Enzymatisches Tiefenpeeling</li>
+                <li>Detox & Regeneration</li>
+                <li>Individuell auf deinen Hauttyp abgestimmt</li>
+              </ul>
+              <div class="flip-back-price">individuell</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 EyeLift Peeling Ritual -->
+        <div class="flip-card skin-card fade-up" data-cat="antiaging">
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/eyelifting.webp"
+                alt="EyeLift"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">04</span>
+              <div class="hot-content">
+                <span class="hot-label">ANTI-AGING</span>
+                <h3 class="hot-name">EyeLift<br />Peeling Ritual</h3>
+                <span class="hot-price">69 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">ANTI-AGING</span>
+              <h3 class="flip-back-title">EyeLift Peeling Ritual</h3>
+              <p class="flip-back-desc">
+                Gezielte Pflege für die empfindliche Augenpartie. Reduziert
+                Schwellungen, mildert dunkle Augenringe und glättet feine Linien
+                rund ums Auge.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 30 Min.</li>
+                <li>Sanftes Augen-Peeling</li>
+                <li>Abschwellende Wirkung</li>
+                <li>Sichtbar wachere Augenpartie</li>
+              </ul>
+              <div class="flip-back-price">69 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 Glow & Renew Acid Peeling -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="antiaging"
+          style="transition-delay: 0.1s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/acid-peeling.jpg"
+                alt="Acid Peeling"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">05</span>
+              <div class="hot-content">
+                <span class="hot-label">ANTI-AGING</span>
+                <h3 class="hot-name">Glow & Renew<br />Acid Peeling</h3>
+                <span class="hot-price">149 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">ANTI-AGING</span>
+              <h3 class="flip-back-title">Glow & Renew Acid Peeling</h3>
+              <p class="flip-back-desc">
+                Professionelles Fruchtsäure-Peeling, das Pigmentflecken
+                aufhellt, die Hautstruktur verfeinert und einen strahlend
+                frischen Teint schenkt.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 45 Min.</li>
+                <li>AHA/BHA Fruchtsäure-Komplex</li>
+                <li>Aufhellung von Pigmentflecken</li>
+                <li>Ebenmäßigerer Teint</li>
+              </ul>
+              <div class="flip-back-price">149 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 Lift & Firm Deluxe -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="antiaging"
+          style="transition-delay: 0.2s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img class="hot-img" src="./image/massage.jpg" alt="Lift Firm" />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">06</span>
+              <div class="hot-content">
+                <span class="hot-label">ANTI-AGING</span>
+                <h3 class="hot-name">Lift & Firm<br />Deluxe</h3>
+                <span class="hot-price">159 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">ANTI-AGING</span>
+              <h3 class="flip-back-title">Lift & Firm Deluxe</h3>
+              <p class="flip-back-desc">
+                Unsere Premium-Anti-Aging-Behandlung mit straffenden Wirkstoffen
+                und speziellen Massagetechniken für einen sichtbaren
+                Lifting-Effekt ohne Nadel.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 90 Min.</li>
+                <li>Lifting-Massage & Modellage</li>
+                <li>Hochkonzentrierte Anti-Aging-Wirkstoffe</li>
+                <li>Sofort straffere Konturen</li>
+              </ul>
+              <div class="flip-back-price">159 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 Dermo Control Aknebehandlung -->
+        <div class="flip-card skin-card fade-up" data-cat="akne">
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img class="hot-img" src="./image/akne.jpg" alt="Akne" />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">07</span>
+              <div class="hot-content">
+                <span class="hot-label">AKNE</span>
+                <h3 class="hot-name">Dermo Control<br />Aknebehandlung</h3>
+                <span class="hot-price">129 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">AKNE</span>
+              <h3 class="flip-back-title">Dermo Control Aknebehandlung</h3>
+              <p class="flip-back-desc">
+                Gezielte Behandlung gegen Akne und Unreinheiten.
+                Tiefenreinigung, antibakterielle Wirkstoffe und beruhigende
+                Pflege für ein klareres Hautbild.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 60 Min.</li>
+                <li>Professionelle Ausreinigung</li>
+                <li>Antibakterielles Wirkstoff-Serum</li>
+                <li>Beruhigende Abschlussmaske</li>
+              </ul>
+              <div class="flip-back-price">129 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 Calm Restore -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="akne"
+          style="transition-delay: 0.1s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/rosazea.jpg"
+                alt="Calm Restore"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">08</span>
+              <div class="hot-content">
+                <span class="hot-label">AKNE</span>
+                <h3 class="hot-name">Calm Restore<br />Rosazea & Sensitive</h3>
+                <span class="hot-price">149 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">AKNE</span>
+              <h3 class="flip-back-title">
+                Calm Restore (Rosazea & Sensitive)
+              </h3>
+              <p class="flip-back-desc">
+                Speziell entwickelt für empfindliche, zu Rötungen neigende Haut.
+                Stärkt die Hautbarriere, beruhigt Irritationen und reduziert
+                sichtbare Rötungen.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 60 Min.</li>
+                <li>Hautbarriere-Stärkung</li>
+                <li>Anti-Rötung-Komplex</li>
+                <li>Kühlende, beruhigende Maske</li>
+              </ul>
+              <div class="flip-back-price">149 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 Microneedling Face + Neck -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="microneedling"
+          style="transition-delay: 0.2s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/microneedling-neck.jpg"
+                alt="Microneedling Neck"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">09</span>
+              <div class="hot-content">
+                <span class="hot-label">MICRONEEDLING</span>
+                <h3 class="hot-name">Microneedling<br />Face + Neck</h3>
+                <span class="hot-price">159 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">MICRONEEDLING</span>
+              <h3 class="flip-back-title">Microneedling Face + Neck</h3>
+              <p class="flip-back-desc">
+                Erweiterte Microneedling-Behandlung für Gesicht und Hals.
+                Strafft, verjüngt und verbessert die Hautstruktur in beiden
+                Bereichen gleichzeitig.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 90 Min.</li>
+                <li>Gesicht + Hals-Behandlung</li>
+                <li>Intensive Kollagenstimulation</li>
+                <li>Straffung & Hautverjüngung</li>
+              </ul>
+              <div class="flip-back-price">159 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 Microneedling + Aquapeel -->
+        <div class="flip-card skin-card fade-up" data-cat="microneedling">
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/microneedling-aquapeel.jpg"
+                alt="Power Duo"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">10</span>
+              <div class="hot-content">
+                <span class="hot-label">MICRONEEDLING</span>
+                <h3 class="hot-name">Microneedling<br />+ Aquapeel</h3>
+                <span class="hot-price">169 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">MICRONEEDLING</span>
+              <h3 class="flip-back-title">Microneedling + Aquapeel</h3>
+              <p class="flip-back-desc">
+                Die Kombination aus Microneedling und Aquapeel-Tiefenreinigung.
+                Zuerst werden die Poren gereinigt, dann werden Wirkstoffe
+                eingeschleust – für maximale Ergebnisse.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 90 Min.</li>
+                <li>Aquapeel-Tiefenreinigung</li>
+                <li>Microneedling mit Wirkstoffen</li>
+                <li>Power-Duo für sichtbare Ergebnisse</li>
+              </ul>
+              <div class="flip-back-price">169 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 AquaLift & Hydration Boost -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="aqua"
+          style="transition-delay: 0.1s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/aquafacial.jpg"
+                alt="AquaLift"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">11</span>
+              <div class="hot-content">
+                <span class="hot-label">AQUAFACIAL</span>
+                <h3 class="hot-name">AquaLift &<br />Hydration Boost</h3>
+                <span class="hot-price">140 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">AQUAFACIAL</span>
+              <h3 class="flip-back-title">AquaLift & Hydration Boost</h3>
+              <p class="flip-back-desc">
+                Intensiver Feuchtigkeitsboost mit Hyaluronsäure und straffender
+                AquaLift-Technologie. Polstert feine Linien auf und schenkt der
+                Haut neues Volumen.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 60 Min.</li>
+                <li>Hyaluronsäure-Infusion</li>
+                <li>AquaLift-Straffung</li>
+                <li>Sofortiger Plumping-Effekt</li>
+              </ul>
+              <div class="flip-back-price">140 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 AquaFacial Business Lady -->
+        <div
+          class="flip-card skin-card fade-up"
+          data-cat="aqua"
+          style="transition-delay: 0.2s"
+        >
+          <div class="flip-card-inner">
+            <div class="flip-card-front hot-card">
+              <img
+                class="hot-img"
+                src="./image/maske.avif"
+                alt="Business Lady"
+              />
+              <div class="hot-overlay"></div>
+              <span class="hot-number">12</span>
+              <div class="hot-content">
+                <span class="hot-label">AQUAFACIAL</span>
+                <h3 class="hot-name">AquaFacial<br />Business Lady</h3>
+                <span class="hot-price">130 €</span>
+              </div>
+            </div>
+            <div class="flip-card-back">
+              <span class="flip-back-label">AQUAFACIAL</span>
+              <h3 class="flip-back-title">AquaFacial – Business Lady</h3>
+              <p class="flip-back-desc">
+                Die Express-Luxusbehandlung für die moderne Frau. Porentief
+                rein, intensiv durchfeuchtet und mit sofortigem Glow – perfekt
+                in der Mittagspause.
+              </p>
+              <ul class="flip-back-details">
+                <li>Dauer: ca. 45 Min.</li>
+                <li>Tiefenreinigung & Peeling</li>
+                <li>Intensive Durchfeuchtung</li>
+                <li>Sofortiger Glow ohne Ausfallzeit</li>
+              </ul>
+              <div class="flip-back-price">130 €</div>
+              <a href="index.html#contact-us" class="flip-back-btn"
+                >Termin buchen</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img
+            src="https://cdn.prod.website-files.com/692f8aed757b362f3c3b52c7/692f8aed757b362f3c3b5317_Logo.png"
+            alt="Christal Beauty Studio"
+          />
+          <p>
+            Weil du es dir wert bist – Nägel, Wimpern, Hautpflege und mehr, mit
+            Liebe zum Detail.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Leistungen</a></li>
+            <li>
+              <a href="gesichtsbehandlungen.html">Gesichtsbehandlungen</a>
+            </li>
+            <li><a href="about.html">Über uns</a></li>
+            <li><a href="index.html#contact-us">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Kontakt & Adresse</div>
+          <ul class="footer-links">
+            <li><a href="tel:+491734347914">+49 173 434 7914</a></li>
+            <li>
+              <a href="https://share.google/r8ibfhrvOdUDfk6Mb" target="_blank"
+                >Ginnheimer Landstraße 204, <br />60431 Frankfurt am Main</a
+              >
+            </li>
+            <li>Mo – Sa: 9:00 – 20:00 Uhr</li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Social</div>
+          <ul class="footer-links">
+            <li>
+              <a href="https://www.instagram.com/christal.ffm/" target="_blank"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a href="https://wa.me/+491734347914" target="_blank">WhatsApp</a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/profile.php?id=61572803693409"
+                target="_blank"
+                >Facebook</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy"
+          >© 2025 Christal Beauty Studio. Alle Rechte vorbehalten.</span
+        >
+        <span class="footer-legal">
+          <a href="impressum.html">Impressum</a> ·
+          <a href="datenschutz.html">Datenschutz</a>
+        </span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
