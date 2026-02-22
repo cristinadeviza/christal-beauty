@@ -525,10 +525,14 @@ nav.scrolled {
   gap: 24px;
 }
 .review-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(4, 91, 85, 0.15);
   padding: 32px;
   border-radius: 4px;
+  cursor: pointer;
   transition:
     border-color 0.3s,
     transform 0.3s,
@@ -541,10 +545,26 @@ nav.scrolled {
   box-shadow: 0 16px 40px rgba(4, 91, 85, 0.15);
   background: rgba(255, 255, 255, 0.08);
 }
+.review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
 .review-stars {
   color: var(--gold);
   font-size: 14px;
-  margin-bottom: 16px;
+}
+.review-google-icon {
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.review-card:hover .review-google-icon {
+  opacity: 1;
+}
+.reviews-cta {
+  text-align: center;
+  margin-top: 40px;
 }
 .review-text {
   font-family: "Raleway", sans-serif;
@@ -2376,7 +2396,7 @@ footer {
 .footer-brand img {
   height: 48px;
   margin-bottom: 16px;
-  filter: brightness(10);
+  filter: brightness(2);
 }
 .footer-brand p {
   font-family: "Raleway", sans-serif;
