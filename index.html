@@ -91,7 +91,6 @@
     </div>
 
     <!-- NAV -->
-    <header>
     <nav id="navbar" aria-label="Hauptnavigation">
       <div class="nav-logo">
         <a href="index.html">
@@ -116,7 +115,6 @@
         <span></span><span></span><span></span>
       </div>
     </nav>
-    </header>
 
     <main>
     <!-- HERO -->
@@ -526,43 +524,72 @@
         <div class="contact-form-side fade-up">
           <h3 class="contact-subtitle">Deine Schönheit verdient das Beste!</h3>
           <p class="contact-desc">
-            Fülle das Formular aus und wir melden uns innerhalb von 15 Minuten
-            bei dir, um deinen Wunschtermin zu bestätigen.
+            Wähle deine Wunschbehandlung und schreibe uns direkt per WhatsApp
+            — wir antworten innerhalb weniger Minuten.
           </p>
-          <form id="contactForm" onsubmit="submitForm(event)">
-            <div class="form-group">
-              <input
-                class="form-input-line"
-                type="text"
-                placeholder="Name"
-                required
-              />
+
+          <form id="contactForm" class="wa-form" onsubmit="submitWhatsApp(event)">
+            <div class="wa-form-step">
+              <span class="wa-step-num">1</span>
+              <div class="wa-step-content">
+                <label class="wa-label" for="contactName">Wie heißt du?</label>
+                <input
+                  class="wa-input"
+                  type="text"
+                  id="contactName"
+                  placeholder="Vor- und Nachname"
+                  required
+                />
+              </div>
             </div>
-            <div class="form-group">
-              <input
-                class="form-input-line"
-                type="tel"
-                placeholder="Telefonnummer"
-                required
-              />
+
+            <div class="wa-form-step">
+              <span class="wa-step-num">2</span>
+              <div class="wa-step-content">
+                <label class="wa-label" for="contactService">Welche Behandlung interessiert dich?</label>
+                <select class="wa-input" id="contactService" required>
+                  <option value="" disabled selected>Behandlung auswählen...</option>
+                  <optgroup label="Nägel & Füße">
+                    <option value="Maniküre & Nail Art">Maniküre & Nail Art</option>
+                    <option value="Pediküre & Fußpflege">Pediküre & Fußpflege</option>
+                  </optgroup>
+                  <optgroup label="Wimpern & Brauen">
+                    <option value="Wimpernverlängerung">Wimpernverlängerung</option>
+                    <option value="Lifting, Laminierung & Färben">Lifting, Laminierung & Färben</option>
+                  </optgroup>
+                  <optgroup label="Permanent Make-up">
+                    <option value="Permanent Make-up">Permanent Make-up</option>
+                  </optgroup>
+                  <optgroup label="Zahnästhetik">
+                    <option value="Professionelles Bleaching">Professionelles Bleaching</option>
+                  </optgroup>
+                  <optgroup label="Gesichtsbehandlungen">
+                    <option value="Carboxy Pro Therapie">Carboxy Pro Therapie</option>
+                    <option value="Microneedling Classic">Microneedling Classic</option>
+                    <option value="BioEnzyme Therapy">BioEnzyme Therapy</option>
+                    <option value="EyeLift Peeling Ritual">EyeLift Peeling Ritual</option>
+                    <option value="Glow & Renew Acid Peeling">Glow & Renew Acid Peeling</option>
+                    <option value="Lift & Firm Deluxe">Lift & Firm Deluxe</option>
+                    <option value="Dermo Control Aknebehandlung">Dermo Control Aknebehandlung</option>
+                    <option value="Calm Restore – Rosazea & Sensitive">Calm Restore – Rosazea & Sensitive</option>
+                    <option value="Microneedling Face + Neck">Microneedling Face + Neck</option>
+                    <option value="Microneedling + Aquapeel">Microneedling + Aquapeel</option>
+                    <option value="AquaLift & Hydration Boost">AquaLift & Hydration Boost</option>
+                    <option value="AquaFacial – Business Lady">AquaFacial – Business Lady</option>
+                  </optgroup>
+                </select>
+              </div>
             </div>
-            <div class="form-group">
-              <input
-                class="form-input-line"
-                type="email"
-                placeholder="E-Mail-Adresse"
-                required
-              />
+
+            <div class="wa-form-send">
+              <button class="wa-btn" type="submit">
+                <svg class="wa-btn-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Termin per WhatsApp anfragen
+              </button>
+              <p class="wa-hint">Du wirst direkt zu WhatsApp weitergeleitet</p>
             </div>
-            <label class="form-checkbox">
-              <input type="checkbox" required />
-              <span>Ich stimme der Verarbeitung meiner Daten zu.</span>
-            </label>
-            <button class="form-submit-new" type="submit">Absenden</button>
           </form>
-          <div class="form-success" id="formSuccess">
-            ✦ Vielen Dank! Wir melden uns schnellstmöglich bei dir.
-          </div>
+
           <blockquote class="contact-quote">
             <p>
               „Jede Frau ist ein Kunstwerk – wir bringen nur dein Strahlen zum
@@ -773,6 +800,15 @@
         }
       }
     </script>
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner hidden" id="cookieBanner">
+      <p class="cookie-text">Wir verwenden Cookies, um dir die bestmögliche Erfahrung auf unserer Website zu bieten. <a href="datenschutz.html">Mehr erfahren</a></p>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akzeptieren</button>
+        <button class="cookie-btn cookie-btn-reject" id="cookieReject">Ablehnen</button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -93,13 +93,21 @@ function filterSkin(cat, btn) {
   });
 }
 
-// Contact form
-function submitForm(e) {
+// Contact form – send via WhatsApp
+function submitWhatsApp(e) {
   e.preventDefault();
-  document.getElementById("contactForm").style.display = "none";
-  const success = document.getElementById("formSuccess");
-  success.style.display = "block";
-  success.style.animation = "fadeInUp 0.6s ease";
+  const name = document.getElementById("contactName").value.trim();
+  const service = document.getElementById("contactService").value;
+  const message =
+    "Hallo, ich bin " +
+    name +
+    " und ich interessiere mich für: " +
+    service +
+    ". Ich würde gerne einen Termin vereinbaren.";
+  const phone = "491734347914";
+  const url =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
 }
 
 // Fade-up on scroll
@@ -178,6 +186,25 @@ function closeLightbox() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeLightbox();
 });
+
+// Cookie banner
+(function () {
+  const banner = document.getElementById("cookieBanner");
+  if (!banner) return;
+  if (localStorage.getItem("cookieConsent")) {
+    banner.classList.add("hidden");
+    return;
+  }
+  banner.classList.remove("hidden");
+  document.getElementById("cookieAccept").addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    banner.classList.add("hidden");
+  });
+  document.getElementById("cookieReject").addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "rejected");
+    banner.classList.add("hidden");
+  });
+})();
 
 // Active nav link highlight on scroll
 const sections = document.querySelectorAll("section[id]");
