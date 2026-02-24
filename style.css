@@ -378,6 +378,10 @@ nav.scrolled {
   object-fit: cover;
   object-position: center top;
   transition: transform 6s ease;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 .hero-photo:hover img {
   transform: scale(1.05);
