@@ -645,6 +645,11 @@ nav.scrolled {
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
 }
+
+.hot-grid .hot-card:last-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 21/9;
+}
 .hot-card {
   position: relative;
   overflow: hidden;
@@ -1772,7 +1777,9 @@ nav.scrolled {
   font-size: 14px;
   color: var(--dark);
   letter-spacing: 0.02em;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 .wa-input::placeholder {
   color: var(--warm-gray);
@@ -1819,7 +1826,10 @@ select.wa-input optgroup {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition:
+    background 0.3s,
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 .wa-btn-icon {
   flex-shrink: 0;

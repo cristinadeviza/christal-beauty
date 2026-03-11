@@ -33,19 +33,16 @@
 
 ### Domeniu inregistrat
 
-| Camp                   | Valoare                                    |
-| ---------------------- | ------------------------------------------ |
-| **Domeniu**            | christal-beauty-studio.de                  |
-| **Data expirare**      | \***\*\*\*\*\*\*\***\_\***\*\*\*\*\*\*\*** |
-| **Reinnoire automata** | Da                                         |
+| Camp                   | Valoare                   |
+| ---------------------- | ------------------------- |
+| **Domeniu**            | christal-beauty-studio.de |
+| **Reinnoire automata** | Da                        |
 
 ## 3. EMAIL PROFESIONAL
 
-| Camp                 | Valoare                                    |
-| -------------------- | ------------------------------------------ |
-| **Email afacere**    | christalbeautystudio@gmail.com             |
-| **Email alternativ** | info@christal-beauty.de                    |
-| **Parola Gmail**     | \***\*\*\*\*\*\*\***\_\***\*\*\*\*\*\*\*** |
+| Camp              | Valoare                        |
+| ----------------- | ------------------------------ |
+| **Email afacere** | christalbeautystudio@gmail.com |
 
 ---
 
@@ -100,7 +97,6 @@ christal-beauty.de/
 | **Instagram**         | https://www.instagram.com/christal.ffm/                |
 | **Facebook**          | https://www.facebook.com/profile.php?id=61572803693409 |
 | **WhatsApp Business** | +49 173 434 7914                                       |
-| **Google Business**   | ChIJQVsNLtMJvUcR6IfpUZda9Ug (Place ID)                 |
 
 ## 8. SERVICII SI PRETURI (Conform website)
 
@@ -176,7 +172,6 @@ christal-beauty.de/
 | Problema              | Solutie                                  |
 | --------------------- | ---------------------------------------- |
 | Site-ul nu se incarca | Verifica daca hostingul IONOS este activ |
-| Email nu functioneaza | Verifica setarile IONOS Mail             |
 | Domeniu expirat       | Reinnoieste din portalul IONOS           |
 | Modificare continut   | Contact developer website                |
 
