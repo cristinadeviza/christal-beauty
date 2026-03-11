@@ -115,6 +115,11 @@ h6 {
   font-weight: 300;
 }
 
+.hot-grid .hot-card:last-child {
+  grid-column: auto;
+  aspect-ratio: 3/4;
+}
+
 /* ── SCROLL PROGRESS BAR ── */
 .scroll-progress {
   position: fixed;
@@ -3122,6 +3127,10 @@ footer {
   }
   .hero-badge {
     right: 0;
+  }
+  .hot-grid .hot-card:last-child {
+    grid-column: auto;
+    aspect-ratio: 3/4;
   }
 }
 
